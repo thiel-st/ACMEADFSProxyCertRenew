@@ -1,0 +1,20 @@
+{
+  "Contacts": [
+    "mailto:thiel.st@stephansoft.de"
+  ],
+  "PublicKey": {
+    "e": "AQAB",
+    "kty": "RSA",
+    "n": "5_YwTYhXRrz5i0e-2YhLIpg0JGVgrjtxlC6owWMWXpWnW7JO3QaeHT5aBsfvNpd-7XsICavEA-47TKcZN4zE3PmZzUG64MDl5ZTfwUv543PrL-SoXui51Jubmj32O8WTrCtD1ZVMb1_H-ba5iEU9cucVBnbWSo4lKDySIBqfaZ_Pw-ZvlSyGoc3T4J_fWBwxvKRGvCZxlzSAXmKvapKj2a2g09YmYiDAEWmUKFnWSgdm02-5wpw3HtnpNb1mYHNxBiasxGhk22t03cjoMPzBzPe-ToyjncNhM0oeDl1RZHmGplsDqazicChKk3NeL5SDeBOPB1YHV6vEULSc64g6kQ"
+  },
+  "RecoveryKey": null,
+  "RegistrationUri": "https://acme-staging.api.letsencrypt.org/acme/reg/9164169",
+  "Links": [
+    "<https://acme-staging.api.letsencrypt.org/acme/new-authz>;rel=\"next\"",
+    "<https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf>;rel=\"terms-of-service\""
+  ],
+  "TosLinkUri": "https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf",
+  "TosAgreementUri": "https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf",
+  "AuthorizationsUri": null,
+  "CertificatesUri": null
+}
