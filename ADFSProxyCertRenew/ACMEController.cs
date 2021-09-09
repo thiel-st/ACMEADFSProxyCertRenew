@@ -73,6 +73,10 @@ namespace ADFSProxyCertRenew
                 Directory.CreateDirectory(this.CertificatePath);
             }
             this.ACMERegistrationPath = Path.Combine(this.WorkingPath, AcmeServerDirectoryName, EMailDirectoryName, "AcmeV2");
+            if (Directory.Exists(Path.Combine(this.ACMERegistrationPath, "50-Orders")))
+            {
+                Directory.Delete(Path.Combine(this.ACMERegistrationPath, "50-Orders"), true);
+            }
         }
         public ACMEController(string baseURI, string registrationEMailAdress) : this(baseURI, registrationEMailAdress, Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))
         { }
@@ -249,6 +253,7 @@ namespace ADFSProxyCertRenew
 
         private void AuthorizeDomains(IEnumerable<string> Dns, ACMECertificate aCMECertificateConfiguration, string certificatePath)
         {
+
             Console.WriteLine("################################################################################");
             Console.WriteLine("## ORDER");
             Console.WriteLine("################################################################################");
@@ -372,7 +377,6 @@ namespace ADFSProxyCertRenew
                                 Console.WriteLine(JsonConvert.SerializeObject(cd));
                                 break;
                         }
-
                         do
                         {
                             Console.WriteLine("  chlng.Status: " + chlngUpdated.Status);
@@ -382,11 +386,10 @@ namespace ADFSProxyCertRenew
                             {
                                 authzUpdated = _acme.GetAuthorizationDetailsAsync(authzUrl).Result;
                             }
-                            if (chlngUpdated.Status == "pending" && chlngUpdated.Type == "http-01" && authz.Status == "pending")
+                            if (chlngUpdated.Status == "pending" && chlngUpdated.Type == "http-01" && authzUpdated.Status == "pending")
                             {
                                 chlngUpdated = _acme.AnswerChallengeAsync(chlng.Url).Result;
                             }
-
 
                             if (chlngUpdated != null)
                             {

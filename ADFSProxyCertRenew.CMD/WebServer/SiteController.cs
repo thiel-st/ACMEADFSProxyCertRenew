@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace ADFSProxyCertRenew.WebServer
 {
@@ -11,6 +12,7 @@ namespace ADFSProxyCertRenew.WebServer
         {
             if (ACMEController.Challenges.ContainsKey(acmefile))
             {
+                Console.WriteLine("  HTTP Download: " + acmefile);
                 return this.Content(ACMEController.Challenges[acmefile].HttpResourceValue, ACMEController.Challenges[acmefile].HttpResourceContentType);
             }
             else

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
@@ -18,6 +19,8 @@ namespace ADFSProxyCertRenew.CMD
             IWebHost webserver = new WebHostBuilder().UseHttpSys().UseUrls("http://+:80/.well-known/acme-challenge/").UseStartup<WebServer.StartUp>().Build();
             webserver.Start();
             Console.WriteLine("Webserver is Running");
+
+            
 
             ACMEController aCMEController = new ACMEController(configuration.AcmeServer, configuration.RegestrationMailAdress, configuration.WorkingDir);
             if (aCMEController.NeedToBeRegisterd)
